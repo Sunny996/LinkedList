@@ -5,6 +5,39 @@ import org.junit.Test;
 
 public class MyLinkedListTest {
     @Test
+    public void givenLastElementWhenDeletedShouldPassLinkedListResult() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(70);
+
+        MyLinkedList myLinkedList = new MyLinkedList();
+        myLinkedList.addNode(myFirstNode);
+        myLinkedList.appendNode(myThirdNode);
+        myLinkedList.insert(myFirstNode, mySecondNode);
+        myLinkedList.popLast();
+
+        boolean result = myLinkedList.getHead().equals(myFirstNode) &&
+                myLinkedList.getTail().equals(mySecondNode);
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void givenFirstElementWhenDeletedShouldPassLinkedListResult() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(70);
+
+        MyLinkedList myLinkedList = new MyLinkedList();
+        myLinkedList.addNode(myFirstNode);
+        myLinkedList.appendNode(myThirdNode);
+        myLinkedList.insert(myFirstNode, mySecondNode);
+        myLinkedList.pop();
+
+        boolean result = myLinkedList.getHead().equals(mySecondNode) &&
+                myLinkedList.getTail().equals(myThirdNode);
+        Assert.assertTrue(result);
+    }
+
+    @Test
     public void given3NumbersWhenInsertingSecondInBetweenShouldPassLinkedListResult() {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);

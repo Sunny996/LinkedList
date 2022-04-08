@@ -38,6 +38,22 @@ public class MyLinkedList<K> {
         newNode.setNext(tempNode);
     }
 
+    public INode pop() {
+        INode tempNode = this.head;
+        this.head = tempNode.getNext();
+        return tempNode;
+    }
+
+    public INode<K> popLast(){
+        INode tempNode=head;
+        while(!tempNode.getNext().equals(tail)){
+            tempNode=tempNode.getNext();
+        }
+        this.tail=tempNode;
+        tempNode=tempNode.getNext();
+        return tempNode;
+    }
+
     public INode<K> getHead() {
         return head;
     }
