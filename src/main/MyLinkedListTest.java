@@ -5,6 +5,27 @@ import org.junit.Test;
 
 public class MyLinkedListTest {
     @Test
+    public void given4ElementWhenAnElementDeletedShouldPassLinkedListResult() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(40);
+        MyNode<Integer> myFourthNode = new MyNode<>(70);
+
+
+        MyLinkedList myLinkedList = new MyLinkedList();
+        myLinkedList.addNode(myFirstNode);
+        myLinkedList.appendNode(mySecondNode);
+        myLinkedList.appendNode(myThirdNode);
+        myLinkedList.appendNode(myFourthNode);
+        myLinkedList.popElement(myThirdNode);
+
+
+        boolean result = myLinkedList.getHead().equals(myFirstNode) && myLinkedList.getHead().getNext().equals(mySecondNode) &&
+                myLinkedList.getTail().equals(myFourthNode) && myLinkedList.size() == 3;
+        Assert.assertTrue(result);
+    }
+
+    @Test
     public void given4NumbersWhenInsertingSecondInBetweenShouldPassLinkedListResult() {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
@@ -15,7 +36,7 @@ public class MyLinkedListTest {
         myLinkedList.addNode(myFirstNode);
         myLinkedList.appendNode(mySecondNode);
         myLinkedList.appendNode(myThirdNode);
-        myLinkedList.insert(mySecondNode,myFourthNode);
+        myLinkedList.insert(mySecondNode, myFourthNode);
 
         boolean result = myLinkedList.getHead().equals(myFirstNode) && myLinkedList.getHead().getNext().equals(mySecondNode) &&
                 myLinkedList.getHead().getNext().getNext().equals(myFourthNode) && myLinkedList.getTail().equals(myThirdNode);
@@ -33,7 +54,7 @@ public class MyLinkedListTest {
         myLinkedList.appendNode(mySecondNode);
         myLinkedList.appendNode(myThirdNode);
 
-        System.out.println(myLinkedList.search(mySecondNode.getKey()).getKey());
+//        System.out.println(myLinkedList.search(mySecondNode.getKey()).getKey());
 
         boolean result = myLinkedList.search(mySecondNode.getKey()).getKey().equals(mySecondNode.getKey()) &&
                 myLinkedList.search(myFirstNode.getKey()).getKey().equals(myFirstNode.getKey()) &&
