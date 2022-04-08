@@ -20,6 +20,16 @@ public class MyLinkedList<K> {
             this.head.setNext(tempNode);
         }
     }
+    public void appendNode(INode<K> newNode){
+        if(this.head==null)
+            this.head=newNode;
+        if(this.tail==null)
+            this.tail=newNode;
+        else{
+            this.tail.setNext(newNode);
+            this.tail=newNode;
+        }
+    }
 
     public INode<K> getHead() {
         return head;
