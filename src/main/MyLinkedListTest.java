@@ -5,6 +5,24 @@ import org.junit.Test;
 
 public class MyLinkedListTest {
     @Test
+    public void givenAnElementSearchedShouldPassLinkedListResult() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(70);
+
+        MyLinkedList myLinkedList = new MyLinkedList();
+        myLinkedList.addNode(myFirstNode);
+        myLinkedList.appendNode(mySecondNode);
+        myLinkedList.appendNode(myThirdNode);
+
+        System.out.println(myLinkedList.search(mySecondNode.getKey()).getKey());
+
+        boolean result = myLinkedList.search(mySecondNode.getKey()).getKey().equals(mySecondNode.getKey()) &&
+                myLinkedList.search(myFirstNode.getKey()).getKey().equals(myFirstNode.getKey()) &&
+                myLinkedList.search(myThirdNode.getKey()).getKey().equals(myThirdNode.getKey());
+        Assert.assertTrue(result);
+    }
+    @Test
     public void givenLastElementWhenDeletedShouldPassLinkedListResult() {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
