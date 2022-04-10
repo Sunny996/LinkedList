@@ -5,6 +5,27 @@ import org.junit.Test;
 
 public class MyLinkedListTest {
     @Test
+    public void given4ElementAfterSortShouldPassLinkedListResult() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(40);
+        MyNode<Integer> myFourthNode = new MyNode<>(70);
+
+
+        SortedLinkedList sortedLinkedList = new SortedLinkedList();
+        sortedLinkedList.appendNode(myFirstNode);
+        sortedLinkedList.appendNode(mySecondNode);
+        sortedLinkedList.appendNode(myThirdNode);
+        sortedLinkedList.appendNode(myFourthNode);
+        sortedLinkedList.print();
+
+
+        boolean result = sortedLinkedList.getHead().equals(mySecondNode) && sortedLinkedList.getHead().getNext().equals(myThirdNode) &&
+                sortedLinkedList.getHead().getNext().getNext().equals(myFirstNode) && sortedLinkedList.getTail().equals(myFourthNode);
+        Assert.assertTrue(result);
+    }
+
+    @Test
     public void given4ElementWhenAnElementDeletedShouldPassLinkedListResult() {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);

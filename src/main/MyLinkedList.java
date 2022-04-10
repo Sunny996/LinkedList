@@ -45,22 +45,35 @@ public class MyLinkedList<K> {
     }
 
     public INode popElement(INode<K> myNode) {
-        INode tempNode = head;
-
-        while (tempNode != null && tempNode.getNext() != null) {
-            if (tempNode.getNext().getKey().equals(myNode.getKey()))
-                break;
-            else
-                tempNode = tempNode.getNext();
+        if (head == null)
+            return null;
+        if (tail == head && head == myNode) {
+            head = null;
+            tail = null;
         }
-        tempNode.setNext(tempNode.getNext().getNext());
+        else if(head==myNode){
+            head=head.getNext();
+        }
+        else {
+            INode tempNode = head;
+
+            while (tempNode != null && tempNode.getNext() != null) {
+                if (tempNode.getNext().getKey().equals(myNode.getKey()))
+                    break;
+                else
+                    tempNode = tempNode.getNext();
+            }
+            if(tail==myNode)
+                tail=tempNode;
+            tempNode.setNext(tempNode.getNext().getNext());
+        }
         return myNode;
     }
 
     public int size() {
         int index = 0;
         INode tempNode = head;
-        while (tempNode != null ) {
+        while (tempNode != null) {
             index++;
             tempNode = tempNode.getNext();
         }
@@ -69,11 +82,10 @@ public class MyLinkedList<K> {
 
     public void print() {
         INode tempNode = head;
-        while (tempNode != null ) {
+        while (tempNode != null) {
             System.out.println(tempNode.getKey());
             tempNode = tempNode.getNext();
         }
-//        System.out.println(tempNode.getKey());
     }
 
     public INode<K> popLast() {
